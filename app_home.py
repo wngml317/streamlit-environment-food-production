@@ -20,7 +20,7 @@ def run_home() :
         st.markdown('- Eutrophying emissions : 부영양화 배출(수질 오염)')
         st.markdown('- Freshwater withdrawals : 담수 취수량')
         st.markdown('- Greenhouse gas emissions : 온실가스 배출')
-        st.markdown('- Land use : 토지 이용')
+        st.markdown('- Land use : 거주 가능한 토지의 사용')
         st.markdown('- Scarcity-weighted water use : 희소성이 가중된 물의 사용')
     
 

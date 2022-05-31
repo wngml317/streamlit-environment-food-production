@@ -1,11 +1,8 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.express as px
 
-def run_search() :
+def run_impact() :
     df = pd.read_csv('data/Food_Production.csv')
 
     environment_list = ['Eutrophying emissions', 'Freshwater withdrawals', 'Land use',
@@ -25,7 +22,7 @@ def run_search() :
     df_impact = df.loc[ :, (df.columns.str.contains(selected1)) & (df.columns.str.contains(selected2))]
     df_impact.insert(0, 'Food product', df['Food product'])
 
-    st.markdown('#### 선택한 환경에 가장 많은 영향을 주는 음식')
+    st.markdown('#### 선택한 환경에 가장 많은 영향을 주는 음식 TOP12')
     # st.dataframe(sorted(df_impact.values, reverse=True))
     
     df_impact = df_impact.sort_values(df_impact.columns[1], ascending=False)
@@ -35,10 +32,3 @@ def run_search() :
     fig = px.bar(df_impact, x= df_impact.columns[1], y=df_impact.columns[0])
     st.plotly_chart(fig)
 
-    # 음식 검색
-    st.sidebar.markdown('\n')
-    st.sidebar.markdown('\n')
-    search_food = st.sidebar.text_input('음식 검색', placeholder='영어로 음식을 입력하세요.')
-    if len(search_food) != 0 :
-        search_df = df.loc[df['Food product'].str.lower().str.contains(search_food), ]
-        st.dataframe(search_df)
