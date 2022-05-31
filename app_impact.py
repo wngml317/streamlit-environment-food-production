@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import matplotlib.pyplot as plt
 
 def run_impact() :
     df = pd.read_csv('data/Food_Production.csv')
@@ -33,3 +34,12 @@ def run_impact() :
     fig = px.bar(df_impact, x= df_impact.columns[1], y=df_impact.columns[0])
     st.plotly_chart(fig)
 
+
+    st.markdown('#### 온실가스 배출량 원인 비율')
+    with st.expander('📌 확인하기'):
+        
+        fig2 = plt.figure()
+        df_chart = df.iloc[:,1:8].sum()
+        plt.pie(df_chart.values, labels=df_chart.index, autopct='%.1f%%')
+        
+        st.pyplot(fig2)
