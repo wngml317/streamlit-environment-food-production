@@ -27,6 +27,7 @@ def run_home() :
 
     df = pd.read_csv('data/Food_Production.csv')
     
+    st.markdown('\n')
     st.markdown('#### 데이터')
     with st.expander('📌 확인하기') :
         st.dataframe(df)

@@ -23,11 +23,12 @@ def run_impact() :
     df_impact.insert(0, 'Food product', df['Food product'])
 
     st.markdown('#### 선택한 환경에 가장 많은 영향을 주는 음식 TOP12')
-    # st.dataframe(sorted(df_impact.values, reverse=True))
+    st.markdown('\n')
     
-    df_impact = df_impact.sort_values(df_impact.columns[1], ascending=False)
+    df_impact = df_impact.sort_values(df_impact.columns[1], ascending=False).head(12)
     st.dataframe(df_impact)
 
+    
     df_impact = df_impact.sort_values(df_impact.columns[1]).head(12)
     fig = px.bar(df_impact, x= df_impact.columns[1], y=df_impact.columns[0])
     st.plotly_chart(fig)

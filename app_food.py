@@ -4,7 +4,7 @@ import plotly.express as px
 
 def run_food() :
 
-    st.subheader('선택한 음식의 환경적 영향 확인하기')
+    st.markdown('#### 선택한 음식의 환경적 영향 확인하기')
     st.write('')
 
     df = pd.read_csv('data/Food_Production.csv')
