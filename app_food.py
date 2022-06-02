@@ -26,6 +26,7 @@ def run_food() :
     food_list = st.multiselect('음식을 선택하세요', df['Food product'])
     st.write('')
 
+    # 음식을 하나 이상 선택하면 출력한다.
     if food_list != [] :
         for i in range(len(food_list)) :
             if i == 0 :
