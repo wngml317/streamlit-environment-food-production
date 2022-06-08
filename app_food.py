@@ -4,7 +4,7 @@ import plotly.express as px
 
 def run_food() :
 
-    st.markdown('#### 선택한 음식의 환경적 영향 확인하기')
+    st.markdown('#### 선택한 식품의 환경적 영향 확인하기')
     st.write('')
 
     df = pd.read_csv('data/Food_Production.csv')
@@ -33,19 +33,11 @@ def run_food() :
                 df_food = df.loc[df['Food product'] == food_list[i]]
             else :
                 df_food = df_food.append(df.loc[df['Food product'] == food_list[i]])
-        
-        
-        
-        st.write('')
-        st.markdown('##### 전체 데이터 확인')
-        st.dataframe(df_food)
-        st.write('')
-
 
         df_impact = df_food.loc[ :, (df_food.columns.str.contains(selected1)) & (df_food.columns.str.contains(selected2))]
         
         df_impact.insert(0, 'Food product', df_food['Food product'])
-        st.write('')
+        
         st.markdown('##### 환경적 영향 데이터 확인')
         st.dataframe(df_impact)
         

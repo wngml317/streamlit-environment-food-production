@@ -1,8 +1,6 @@
-import streamlit
-
-
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 def run_home() :
     st.markdown('#### 데이터 설명')
@@ -29,5 +27,15 @@ def run_home() :
     
     st.markdown('\n')
     st.markdown('#### 데이터')
-    with st.expander('📌 확인하기') :
-        st.dataframe(df)
+    st.dataframe(df)
+
+    st.write('')
+
+    st.markdown('#### 온실가스 배출량 원인 비율')
+    with st.expander('📌 확인하기'):
+    
+        emissions = df.iloc[:,1:8].sum()
+        df_emissions = pd.DataFrame({'cause' : emissions.index, 'ratio' : emissions.values})
+        
+        fig2 = px.pie(df_emissions, values = 'ratio', names = 'cause', width=650)
+        st.plotly_chart(fig2)
